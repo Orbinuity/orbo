@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Orbo Contact">
+    <meta property="og:description" content="Contact Orbinuity company">
+    <meta property="og:image" content="https://data.orbinuity.nl/orbo/logo.png">
+    <meta name="description" content="Contact Orbinuity company">
+    <meta name="generator" content="Github">
+    <meta name="author" content="Orbinuity">
+    <meta name="keywords" content="Orbinuity, website, tech, software, hartware, company, contact">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="https://data.orbinuity.nl/orbo/logo.png" type="image/png">
+    <title>Orbo - Contact</title>
+    <link rel="stylesheet" href="https://orbinuity.nl/style.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="header"></div>
+
+<main class="container">
+    <h1>Contact Us</h1>
+    <section>
+        <div class="card">
+            <a href="mailto:orbinuity@ratgers.nl" class="no-underline"><button>E-mail</button></a>
+            <a href="https://www.patreon.com/cw/Orbinuity" class="no-underline"><button>Patreon</button></a>
+            <a href="https://www.twitch.tv/orbinuity" class="no-underline"><button>Twitch</button></a>
+            <a href="https://www.reddit.com/r/Orbinuity/" class="no-underline"><button>Reddit</button></a>
+            <a href="https://www.youtube.com/@Orbinuity" class="no-underline"><button>YouTube</button></a>
+            <a href="https://www.github.com/Orbinuity" class="no-underline"><button>Github</button></a>
+        </div>
+        <div class="card">
+            <form onsubmit="sendEmail(event)">
+                <label for="name">Name</label>
+                <input type="text" id="name" required placeholder="Your name">
+                
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" required placeholder="Your message"></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<div id="footer"></div>
+
+<script src="https://orbinuity.nl/contact.js" data-mail="orbinuity@ratgers.nl" data-sub="&(name) has a question!" data-prt="Hello, Orbinuity&#10;&#10;&(body)&#10;&#10;With kind regards,&#10;&(name)" data-ms="Thanks for contacting us, &(name). Your mail app will open now!"></script>
+<script src="https://orbinuity.nl/script.js"></script>
+<script src="/script.js"></script>
+
+</body>
+</html>
