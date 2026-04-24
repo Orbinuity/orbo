@@ -5,7 +5,7 @@ async function init() {
         ?.split("=")[1];
 
     if (token) {
-        const response = await fetch('http://localhost:3333/api/userinfo', {
+        const response = await fetch('http://orbo.api.orbinuity.nl/api/userinfo', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
