@@ -11,7 +11,7 @@ async function inita(PS, accept) {
 
         async function press(PS) {
             try {
-                const response = await fetch('http://89.184.185.202:55555/api/useraccept', {
+                const response = await fetch('https://orboapi.orbinuity.nl/api/useraccept', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ async function inita(PS, accept) {
     });
 
     try {
-        const response = await fetch('http://89.184.185.202:55555/api/userinfo', {
+        const response = await fetch('https://orboapi.orbinuity.nl/api/userinfo', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,10 +42,6 @@ async function inita(PS, accept) {
         });
         
         const data = await response.json();
-
-        console.log("Response OK?:", response.ok);
-        console.log("Full Server Data:", data);
-        console.log("Value of data.user.psa:", data?.user?.psa);
 
         if (!response.ok || !data?.user?.psa) {
             PS.showModal();
