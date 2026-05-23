@@ -1,6 +1,6 @@
 async function testToken(token, headerNav) {
     if (token) {
-        const response = await fetch('https://orboapi.orbinuity.nl:5555/api/userinfo', {
+        const response = await fetch('https://orboapi.orbinuity.nl:55555/api/userinfo', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
