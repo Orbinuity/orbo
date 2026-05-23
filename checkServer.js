@@ -1,6 +1,6 @@
 async function initc() {
     try {
-        const response = await fetch('https://orboapi.orbinuity.nl:5555/api/isonline', {
+        const response = await fetch('https://orboapi.orbinuity.nl:55555/api/isonline', {
             method: 'GET'
         });
 
