@@ -1,4 +1,4 @@
-const observerb = new MutationObserver((mutations, obs) => {
+const observerd = new MutationObserver((mutations, obs) => {
     const headerNav = document.getElementById("header-nav");
     
     if (headerNav) {
@@ -8,7 +8,7 @@ const observerb = new MutationObserver((mutations, obs) => {
     }
 });
 
-observerb.observe(document.documentElement, {
+observerd.observe(document.documentElement, {
     childList: true,
     subtree: true
 });
