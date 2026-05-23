@@ -20,6 +20,13 @@
 
 <div id="header"></div>
 
+<dialog closedby="none" id="PS">
+    <p>Please read the new <a href="privacy"><strong>Privacy Policy</strong></a>.</p>
+    <p>Do you accept the new Privacy Policy?</p>
+    <a href="#" id="signout" class="no-underline" style="float:left;" title="Logout"><button>I don't accept</button></a>
+    <a href="#" id="accept" class="no-underline" style="float:right;" title="Continue"><button>I accept</button></a>
+</dialog>
+
 <main class="container">
     <h1 id="title">Welcome</h1>
     <section>
@@ -33,7 +40,8 @@
 
 <script src="https://orbinuity.nl/script.js"></script>
 <script src="/checkServer.js"></script>
-<script src="/private.js"></script>
+<script src="/checkPS.js"></script>
+
 <script src="/home.js"></script>
 
 </body>
