@@ -6,7 +6,7 @@ const token = document.cookie
 if (!token) document.location.href = "/";
 
 async function initb(title) {
-    const response = await fetch('https://orboapi.orbinuity.nl/api/userinfo', {
+    const response = await fetch('https://orboapi.orbinuity.nl:5555/api/userinfo', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
