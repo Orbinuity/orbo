@@ -1,6 +1,6 @@
-async function init() {
+async function initc() {
     try {
-        const response = await fetch('https://orbo-api.orbinuity.nl/api/isonline', {
+        const response = await fetch('http://89.184.185.202:55555/api/isonline', {
             method: 'GET'
         });
 
@@ -12,4 +12,4 @@ async function init() {
     }
 }
 
-init()
+initc()
