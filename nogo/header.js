@@ -1,4 +1,4 @@
-const observerc = new MutationObserver((mutations, obs) => {
+const observere = new MutationObserver((mutations, obs) => {
     const signout = document.getElementById("signout");
 
     if (signout) {
@@ -13,7 +13,7 @@ const observerc = new MutationObserver((mutations, obs) => {
     }
 });
 
-observerc.observe(document.documentElement, {
+observere.observe(document.documentElement, {
     childList: true,
     subtree: true
 });
