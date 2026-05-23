@@ -2,3 +2,36 @@
     --accent: #871387;
     --accent-focus: #660066;
 }
+
+dialog {
+    background-color: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+}
+
+dialog:focus,
+dialog:focus-visible {
+    outline: none;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+dialog h2 {
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+dialog p {
+    margin-bottom: 1.5rem;
+    color: var(--dark-text);
+}
