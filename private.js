@@ -5,7 +5,7 @@ async function initd() {
         ?.split("=")[1];
 
     if (token) {
-        const response = await fetch('http://89.184.185.202:55555/api/userinfo', {
+        const response = await fetch('https://orboapi.orbinuity.nl/api/userinfo', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
