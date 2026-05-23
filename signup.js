@@ -19,7 +19,7 @@ form.addEventListener('submit', async (event) => {
     }
 
     try {
-        const response = await fetch('https://orboapi.orbinuity.nl:5555/api/signup', {
+        const response = await fetch('https://orboapi.orbinuity.nl:55555/api/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
