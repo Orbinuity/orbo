@@ -1,6 +1,6 @@
 async function testToken(token, headerNav) {
     if (token) {
-        const response = await fetch('https://orbo-api.orbinuity.nl/api/userinfo', {
+        const response = await fetch('http://89.184.185.202:55555/api/userinfo', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ async function testToken(token, headerNav) {
     } else headerNav.innerHTML = "";
 }
 
-const observerb = new MutationObserver((mutations, obs) => {
+const observerc = new MutationObserver((mutations, obs) => {
     const headerNav = document.getElementById("header-nav");
     
     if (headerNav) {
@@ -28,7 +28,7 @@ const observerb = new MutationObserver((mutations, obs) => {
     }
 });
 
-observerb.observe(document.documentElement, {
+observerc.observe(document.documentElement, {
     childList: true,
     subtree: true
 });
