@@ -11,7 +11,7 @@ async function inita(PS, accept) {
 
         async function press(PS) {
             try {
-                const response = await fetch('https://orboapi.orbinuity.nl:5555/api/useraccept', {
+                const response = await fetch('https://orboapi.orbinuity.nl:55555/api/useraccept', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ async function inita(PS, accept) {
     });
 
     try {
-        const response = await fetch('https://orboapi.orbinuity.nl:5555/api/userinfo', {
+        const response = await fetch('https://orboapi.orbinuity.nl:55555/api/userinfo', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
