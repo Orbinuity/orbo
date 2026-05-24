@@ -1,11 +1,11 @@
-const form = document.getElementById('registerForm');
+const form = document.getElementById('signinForm');
 const statusMessage = document.getElementById('statusMessage');
 
-form.addEventListener('submit', async (event) => {
+async function signin(event) {
     event.preventDefault(); 
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
     
     const formData = new FormData(form);
     const captchaToken = formData.get('g-recaptcha-response'); 
@@ -46,4 +46,4 @@ form.addEventListener('submit', async (event) => {
         statusMessage.textContent = "Failed to connect to the server.";
         statusMessage.style.color = "red";
     }
-});
+}
