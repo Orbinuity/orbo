@@ -23,7 +23,14 @@ async function initd() {
         const data = await response.json();
 
         if (response.ok) {
-            title.textContent = `Hello, ${data.user.name}!`;
+            const a = document.createElement('a');
+            a.href = "/u#"+data.user.username;
+            a.style = "font-weight: 700;";
+            a.textContent = data.user.name;
+
+            title.innerHTML = "Hello, ";
+            title.appendChild(a);
+            title.innerHTML += "!";
             username.placeholder = data.user.username;
             email.placeholder = data.user.email;
             name.placeholder = data.user.name;
