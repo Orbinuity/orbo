@@ -6,20 +6,24 @@ const token = document.cookie
 if (!token) document.location.href = "/";
 
 async function initb(title) {
-    const response = await fetch('https://orboapi.orbinuity.nl:55555/api/userinfo', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+    try {
+        const response = await fetch('https://orboapi.orbinuity.nl:55555/api/userinfo', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            title.textContent += data.user.name;
+        } else {
+            alert(data.error)
         }
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok) {
-        title.textContent += ", "+data.user.name;
-    } else {
-        title.textContent += " to Orbo"
+    } catch (err) {
+        console.error("Failed to fetch user info: "+err);
     }
 }
 
