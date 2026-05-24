@@ -19,13 +19,17 @@ async function inita(PS, accept) {
                     }
                 });
 
+                const data = await response.json();
+
                 if (response.ok) {
                     PS.close();
                 } else {
-                    console.error("Failed to accept");
+                    document.location.href = "/";
+                    alert(data.error)
+                    console.error("Failed to accept: "+data.error);
                 }
             } catch (err) {
-                console.error("Network error:", err);
+                console.error("Network error: "+err);
             }
         }
 
@@ -43,14 +47,18 @@ async function inita(PS, accept) {
         
         const data = await response.json();
 
-        if (!response.ok || !data?.user?.psa) {
-            PS.showModal();
+        if (response.ok) {
+            if (data?.user?.psa) {
+                PS.close();
+            } else {
+                PS.showModal();
+            }
         } else {
-            PS.close();
+            alert(data.error);
+            console.error("Failed to fetch user info: "+data.error);
         }
     } catch (err) {
-        console.error("Failed to fetch user info:", err);
-        PS.showModal();
+        console.error("Failed to fetch user info: "+err);
     }
 }
 
