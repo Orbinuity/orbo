@@ -56,6 +56,11 @@ async function saveOptions(event) {
     const formData = new FormData(document.getElementById('accountForm'));
     const captchaToken = formData.get('g-recaptcha-response'); 
 
+    if (!captchaToken) {
+        alert("Please check the 'I'm not a robot' box.");
+        return;
+    }
+
     const token = document.cookie
         .split("; ")
         .find(row => row.startsWith('token='))
@@ -94,6 +99,57 @@ async function saveOptions(event) {
         }
     } catch (error) {
         console.error("Failed to update user info: "+error);
+        return;
+    }
+}
+
+async function removeAccount(event) {
+    event.preventDefault(); 
+
+    const password = document.getElementById("r-password").value.trim();
+
+    const formData = new FormData(document.getElementById('removeForm'));
+    const captchaToken = formData.get('g-recaptcha-response'); 
+
+    if (!captchaToken) {
+        alert("Please check the 'I'm not a robot' box.");
+        return;
+    }
+
+    if (!confirm("Are you sure you want to remove your accont and all your data?\nYOU CAN NOT UNDO THIS!")) return;
+
+    const token = document.cookie
+        .split("; ")
+        .find(row => row.startsWith('token='))
+        ?.split("=")[1];
+
+    if (!token) document.location.href = "/";
+
+    try {
+        const response = await fetch('https://orboapi.orbinuity.nl:55555/api/removeuser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                password: password,
+                captchaToken: captchaToken
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Its gone.\n"+data.message);
+            document.cookie = "token=; max-age=0; path=/";
+            document.location.href = "/"
+        } else {
+            alert(data.error)
+            return;
+        }
+    } catch (error) {
+        console.error("Failed to remove account: "+error);
         return;
     }
 }
