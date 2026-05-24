@@ -5,10 +5,10 @@ async function initc() {
         });
 
         if (!response.ok) {
-            document.location.href = "/serverOffline";
+            document.location.href = "/serverProblem";
         }
     } catch (error) {
-        document.location.href = "/serverOffline";
+        document.location.href = "/serverProblem";
     }
 }
 
