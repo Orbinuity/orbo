@@ -9,7 +9,7 @@ async function makePost(event) {
     if (!token) document.location.href = "/";
     
     const title = document.getElementById('title').value.trim();
-    const post = document.getElementById('post').value;
+    const post = document.getElementById('post').value.trim();
     
     if (!title || !post) {
         alert("Please fill in both fields.");
