@@ -64,6 +64,28 @@ async function renderContent() {
                 });
             
                 const completedPosts = await Promise.all(postPromises);
+
+                let loggedInUsername = null;
+                try {
+                    const responsec = await fetch('https://orboapi.orbinuity.nl:55555/api/userinfo', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    const datac = await responsec.json();
+                    
+                    if (responsec.ok) {
+                        loggedInUsername = datac.user.username;
+                    } else {
+                        alert(datac.error);
+                        return;
+                    }
+                } catch (error) {
+                    console.error("Error loading user info: ", error);
+                }
             
                 completedPosts.forEach((postData) => {
                     if (!postData) return;
@@ -83,6 +105,16 @@ async function renderContent() {
                     card.innerHTML = md.render(datab.post);
                     card.appendChild(document.createElement("br"));
                     card.appendChild(p);
+
+                    if (loggedInUsername && loggedInUsername === datab.username) {
+                        const button = document.createElement('button');
+                        button.textContent = "Edit post";
+                        const a_b = document.createElement('a');
+                        a_b.href = "/edit#" + route;
+                        a_b.style = "display: block; margin-left: auto; width: max-content;";
+                        a_b.appendChild(button);
+                        card.appendChild(a_b);
+                    }
 
                     const a = document.createElement("a");
                     a.className = "card-link";
