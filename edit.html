@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Orbo">
+    <meta property="og:description" content="A way to be together!">
+    <meta property="og:image" content="https://data.orbinuity.nl/orbo/logo.png">
+    <meta name="description" content="A way to be together!">
+    <meta name="generator" content="Github">
+    <meta name="author" content="Orbinuity">
+    <meta name="keywords" content="Orbinuity, website, tech, software, hardware, company, Orbo">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="https://data.orbinuity.nl/orbo/logo.png" type="image/png">
+    <title>Orbo - Edit post</title>
+    <link rel="stylesheet" href="https://orbinuity.nl/style.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="header"></div>
+
+<dialog closedby="none" id="PS">
+    <p>Please read the new <a href="privacy"><strong>Privacy Policy</strong></a>.</p>
+    <p>Do you accept the new Privacy Policy?</p>
+    <a href="#" id="signout" class="no-underline" style="float:left;" title="Logout"><button>I don't accept</button></a>
+    <a href="#" id="accept" class="no-underline" style="float:right;" title="Continue"><button>I accept</button></a>
+</dialog>
+
+<main class="container">
+    <h1>Edit post</h1>
+    <section>
+        <div class="card">
+            <form onsubmit="savePost(event)">
+                <label for="title">Title</label>
+                <input type="text" id="title" required maxlength="128" placeholder="Title of your post">
+                
+                <label for="post">Post</label>
+                <textarea id="post" rows="5" required placeholder="Your post"></textarea>
+                
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<div id="footer"></div>
+
+<script src="https://orbinuity.nl/script.js"></script>
+<script src="/checkServer.js"></script>
+<script src="/checkPS.js"></script>
+<script src="/edit.js"></script>
+
+
+</body>
+</html>
