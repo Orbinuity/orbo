@@ -48,6 +48,13 @@ async function renderContent() {
             title.textContent = data.title;
             pageTitle.textContent += data.title;
             post.innerHTML = md.render(data.post);
+            const button = document.createElement('button');
+            button.textContent = "Edit post";
+            const a_b = document.createElement('a');
+            a_b.href = "/edit#"+route;
+            a_b.style = "display: block; margin-left: auto; width: max-content;"
+            a_b.appendChild(button);
+            post.appendChild(a_b);
         } else {
             alert(data.error)
             return;
