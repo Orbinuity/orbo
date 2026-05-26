@@ -112,6 +112,14 @@ async function savePost(event) {
     }
 }
 
+function back(event) {
+    event.preventDefault();
+
+    const route = window.location.hash.substring(1); 
+
+    window.location.href = `/p#${route}`;
+}
+
 renderContent()
 
 window.addEventListener('hashchange', renderContent);
