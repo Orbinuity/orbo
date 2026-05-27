@@ -1,5 +1,7 @@
 const form = document.getElementById('signinForm');
 const statusMessage = document.getElementById('statusMessage');
+const ousername = document.getElementById('username');
+const opassword = document.getElementById('password');
 
 async function signin(event) {
     event.preventDefault(); 
@@ -47,3 +49,6 @@ async function signin(event) {
         statusMessage.style.color = "red";
     }
 }
+
+ousername.oninvalid = () => ousername.setCustomValidity("Username can only contain lowercase letters, numbers and underscores and must be less then 32 characters long.");
+opassword.oninvalid = () => opassword.setCustomValidity("Password needs to be between 6 and 256 characters long.");
