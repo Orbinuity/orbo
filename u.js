@@ -111,7 +111,8 @@ async function renderContent(reload) {
                         const button = document.createElement('button');
                         button.textContent = "Edit post";
                         const a_b = document.createElement('a');
-                        a_b.href = "/edit#" + route;
+                        a_b.className = "no-underline";
+                        a_b.href = "/edit#" + postId;
                         a_b.style = "display: block; margin-left: auto; width: max-content;";
                         a_b.appendChild(button);
                         card.appendChild(a_b);
