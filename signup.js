@@ -1,5 +1,9 @@
 const form = document.getElementById('signupForm');
 const statusMessage = document.getElementById('statusMessage');
+const ousername = document.getElementById('username');
+const oemail = document.getElementById('email');
+const opassword = document.getElementById('password');
+const oname = document.getElementById('name');
 
 async function signup(event) {
     event.preventDefault(); 
@@ -17,6 +21,11 @@ async function signup(event) {
         statusMessage.style.color = "red";
         return;
     }
+
+    username.setCustomValidity("Username can only contain lowercase letters, numbers and underscores and must be less then 32 characters long.");
+    email.setCustomValidity("This is not a valid email, make sure its a email and is less then 254 characters long.");
+    password.setCustomValidity("Password needs to be between 6 and 256 characters long.");
+    name.setCustomValidity("Name must be less then 64 characters long.");
 
     try {
         const response = await fetch('https://orboapi.orbinuity.nl:55555/api/signup', {
@@ -51,3 +60,8 @@ async function signup(event) {
         statusMessage.style.color = "red";
     }
 }
+
+ousername.oninvalid = () => ousername.setCustomValidity("Username can only contain lowercase letters, numbers and underscores and must be less then 32 characters long.");
+oemail.oninvalid = () => oemail.setCustomValidity("This is not a valid email, make sure its a email and is less then 254 characters long.");
+opassword.oninvalid = () => opassword.setCustomValidity("Password needs to be between 6 and 256 characters long.");
+oname.oninvalid = () => oname.setCustomValidity("Name must be less then 64 characters long.");
