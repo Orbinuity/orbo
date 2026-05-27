@@ -27,10 +27,10 @@
         <div class="card">
             <form id="signinForm" onsubmit="signin(event)">
                 <label for="username">Username:</label>
-                <input type="text" id="username" required>
+                <input type="text" id="username" maxlength="32" pattern="[a-z0-9_]{1,32}" required>
             
                 <label for="password">Password:</label>
-                <input type="password" id="password" required>
+                <input type="password" id="password" minlength="6" maxlength="256" required>
             
                 <div class="g-recaptcha" data-sitekey="6LeoYr8sAAAAAMw0ZUfqk05sZr74lggQxnvE7XG7"></div>
             
