@@ -21,7 +21,6 @@ async function testUser() {
             const data = await response.json();
 
             if (response.ok) {
-                console.log(0);
                 try {
                     const postPromises = [...data.user.posts].reverse().map(async (postId) => {
                         const responseb = await fetch('https://orboapi.orbinuity.nl:55555/api/getpost', {
@@ -46,7 +45,6 @@ async function testUser() {
                     const completedPosts = await Promise.all(postPromises);
                 
                     completedPosts.forEach((postData) => {
-                        console.log(1);
                         if (!postData) return;
                         const { postId, postObject } = postData;
 
