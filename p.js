@@ -40,6 +40,28 @@ async function renderContent() {
 
         const data = await response.json();
 
+        let loggedInUsername = null;
+        try {
+            const responsec = await fetch('https://orboapi.orbinuity.nl:55555/api/userinfo', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+                
+            const datac = await responsec.json();
+            
+            if (responsec.ok) {
+                loggedInUsername = datac.user.username;
+            } else {
+                alert(datac.error);
+                return;
+            }
+        } catch (error) {
+            console.error("Error loading user info: ", error);
+        }
+
         if (response.ok) {
             const a = document.createElement('a');
             a.href = "/u#"+data.username;
@@ -48,13 +70,15 @@ async function renderContent() {
             title.textContent = data.title;
             pageTitle.textContent += data.title;
             post.innerHTML = md.render(data.post);
-            const button = document.createElement('button');
-            button.textContent = "Edit post";
-            const a_b = document.createElement('a');
-            a_b.href = "/edit#"+route;
-            a_b.style = "display: block; margin-left: auto; width: max-content;"
-            a_b.appendChild(button);
-            post.appendChild(a_b);
+            if (loggedInUsername && loggedInUsername === datab.username) {
+                const button = document.createElement('button');
+                button.textContent = "Edit post";
+                const a_b = document.createElement('a');
+                a_b.href = "/edit#" + route;
+                a_b.style = "display: block; margin-left: auto; width: max-content;";
+                a_b.appendChild(button);
+                post.appendChild(a_b);
+            }
         } else {
             alert(data.error)
             return;
