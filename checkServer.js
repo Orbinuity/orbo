@@ -5,10 +5,11 @@ async function initc() {
         });
 
         if (!response.ok) {
-            document.location.href = "/serverProblem";
+            document.location.href = "/serverProblem#offline";
         }
     } catch (error) {
-        document.location.href = "/serverProblem";
+        console.error("Failed to check server: "+error);
+        return;
     }
 }
 
