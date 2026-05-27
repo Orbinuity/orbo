@@ -7,6 +7,8 @@ const md = new MarkdownIt({
     typographer: true   
 }).use(markdownItEmoji);
 
+let loadedPosts = 0;
+
 async function renderContent() {
     const route = window.location.hash.substring(1); 
     const pageTitle = document.getElementById("pageTitle");
@@ -43,7 +45,7 @@ async function renderContent() {
             pageTitle.textContent += data.user.name;
             title.textContent = data.user.name;
             try {
-                const postPromises = [...data.user.posts].reverse().slice(0, 5).map(async (postId) => {
+                const postPromises = [...data.user.posts].reverse().slice(loadedPosts, loadedPosts+5).map(async (postId) => {
                     const responseb = await fetch('https://orboapi.orbinuity.nl:55555/api/getpost', {
                         method: 'POST',
                         headers: {
@@ -141,6 +143,14 @@ async function renderContent() {
     }
 }
 
+async function onscroll() {
+    if (window.pageYOffset + window.innerHeight >= document.body.scrollHeight) {
+        loadedPosts += 5;
+        await renderContent()
+    }
+}
+
 renderContent();
 
 window.addEventListener('hashchange', renderContent);
+window.addEventListener("scroll", onscroll);
