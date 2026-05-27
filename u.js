@@ -9,10 +9,9 @@ const md = new MarkdownIt({
 
 let loadedPosts = 0;
 
-async function renderContent() {
+async function renderContent(reload) {
     const route = window.location.hash.substring(1); 
     const pageTitle = document.getElementById("pageTitle");
-    const title = document.getElementById("title");
     const mainObj = document.getElementById("mainObj");
 
     if (!route || route === '/') {
@@ -42,8 +41,8 @@ async function renderContent() {
         const data = await response.json();
 
         if (response.ok) {
+            if (reload) mainObj.innerHTML = `<h1>${data.user.name}</h1>`;
             pageTitle.textContent += data.user.name;
-            title.textContent = data.user.name;
             try {
                 const postPromises = [...data.user.posts].reverse().slice(loadedPosts, loadedPosts+5).map(async (postId) => {
                     const responseb = await fetch('https://orboapi.orbinuity.nl:55555/api/getpost', {
@@ -146,11 +145,11 @@ async function renderContent() {
 async function onscroll() {
     if (window.pageYOffset + window.innerHeight >= document.body.scrollHeight) {
         loadedPosts += 5;
-        await renderContent()
+        await renderContent(false)
     }
 }
 
-renderContent();
+renderContent(true);
 
-window.addEventListener('hashchange', renderContent);
+window.addEventListener('hashchange', () => renderContent(true));
 window.addEventListener("scroll", onscroll);
