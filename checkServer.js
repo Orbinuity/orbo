@@ -8,8 +8,7 @@ async function initc() {
             document.location.href = "/serverProblem#offline";
         }
     } catch (error) {
-        console.error("Failed to check server: "+error);
-        return;
+        document.location.href = "/serverProblem#offline";
     }
 }
 
